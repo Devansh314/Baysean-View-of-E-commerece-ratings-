@@ -106,13 +106,16 @@ bayesian-ecommerce-resellers/
 │                                    # derivations, visualizations, and R code
 │
 ├── code/
-│   ├── beta\_distributions.R         # Plot three posterior Beta distributions
-│   ├── pairwise\_dominance.R         # Compute P(X₁ > X₂) using closed-form solution
-│   ├── three\_way\_dominance.R        # Compute P(Xₖ > max(Xᵢ, Xⱼ)) for all sellers
-│   ├── expectation\_variance.R       # Posterior mean and variance calculations
-│   └── dominance\_vs\_expectation.R   # Comparison: E\[X] ranking vs P(dominance) ranking
+│   ├── Disp_3_BETA.R                   # Plot three posterior Beta distributions
+│   ├── Display beta distributions.R    # compare 2 beta distributions more reviews vs less reviews  
+│   ├── dispEXP_Beta.R                  # 2 beta distributions compared one with skwed ratio of positive and negative reviews and quantity of reviews
+│   ├── high_params.R                   # Comparison: E\[X] ranking vs P(dominance) ranking
+│   ├── run3probs.R                     # Compute P(Xₖ > max(Xᵢ, Xⱼ)) for all sellers
+│   ├── run_prob.R                      # Posterior mean and variance calculations
+│   └── run2probs.R                     # Compute P(Xₖ > max(Xᵢ, Xⱼ)) for all sellers
+│   
 │
-├── figures/
+└──figures/
     ├── beta\_distributions.png       # Overlaid posterior density plots
     ├── beta\_with\_expectations.png   # Beta distributions annotated with E\[X] values
     └── 3d\_joint\_distribution.png    # Joint density surface for P(x₁ > x₂) visualization
