@@ -2,8 +2,7 @@
 Bayesian Beta-Binomial framework for ranking e-commerce sellers by probability of dominance — derives closed-form P(X₁ > X₂) solutions and shows why expected-value ranking fails under review-count uncertainty. Implemented in R. It is essentially a probabilistic approach to the "which seller should you trust?" problem 
 Bayesian View of E-Commerce Resellers
 A Probabilistic Framework for Evaluating Seller Trustworthiness from Review Data
-![R](https://www.r-project.org/)
-[![Stats](https://img.shields.io/badge/Method-Bayesian%20Inference-8A2BE2?style=flat-square)]()
+
 
 ---
 Overview
@@ -190,7 +189,7 @@ This project offers several insights relevant to e-commerce platforms, behaviora
 ---
 
 ---
-🙏 Acknowledgements
+Acknowledgements
 This project was developed as part of a Probability and Statistics course in the B.Tech Computer Engineering program. The motivating problem — choosing between three sellers with different review volumes and ratings — was used as a pedagogical thread to connect Bayesian inference, Beta distributions, and decision theory.
 ---
 Presented by: Devansh Patel · B-Tech C.E., Batch II · November 2024
