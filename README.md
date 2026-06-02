@@ -1,30 +1,30 @@
 # Baysean-View-of-E-commerece-ratings-
 Bayesian Beta-Binomial framework for ranking e-commerce sellers by probability of dominance — derives closed-form P(X₁ > X₂) solutions and shows why expected-value ranking fails under review-count uncertainty. Implemented in R. It is essentially a probabilistic approach to the "which seller should you trust?" problem 
-🛒 Bayesian View of E-Commerce Resellers
+Bayesian View of E-Commerce Resellers
 A Probabilistic Framework for Evaluating Seller Trustworthiness from Review Data
 ![R](https://www.r-project.org/)
 ![License: MIT](https://opensource.org/licenses/MIT)
 [![Stats](https://img.shields.io/badge/Method-Bayesian%20Inference-8A2BE2?style=flat-square)]()
 [![Domain](https://img.shields.io/badge/Domain-E--Commerce%20Analytics-FF6B35?style=flat-square)]()
 ---
-📌 Overview
+Overview
 When you browse a product on an e-commerce platform and see three sellers — one with 10 reviews at 100% positive, another with 50 reviews at 96% positive, and a third with 200 reviews at 93% positive — which do you choose?
 This project answers that question rigorously using Bayesian statistical inference. Rather than relying on raw percentages or simple averages, we model each seller's underlying quality as a continuous random variable and compute the probability that one seller is genuinely better than the others — accounting for uncertainty introduced by small sample sizes.
 The project derives and implements a closed-form analytical solution for the probability of dominance between Beta-distributed random variables, providing a mathematically principled basis for consumer decision-making in e-commerce.
 ---
-🎯 Research Objectives
+Research Objectives
 Formalize the buyer's problem: Frame the seller-selection problem as Bayesian inference over an unknown success rate parameter `S ∈ \[0, 1]`.
 Model seller quality with the Beta distribution: Derive why the Beta distribution is the natural conjugate prior for binomial review data.
 Quantify comparative trust: Derive closed-form expressions for `P(X₁ > X₂)` and `P(Xₖ > max(Xᵢ, Xⱼ))` for Beta-distributed random variables.
 Demonstrate why expected value alone is insufficient: Show that probability of dominance — not just posterior mean — is the correct optimality criterion.
 Apply to a real scenario: Evaluate the three-seller problem from the opening example with full mathematical transparency.
 ---
-🧠 Research Hypotheses
+Research Hypotheses
 > \*\*H1 (Sample Size Effect):\*\* A seller with more reviews but a slightly lower percentage rating will have a higher posterior probability of being the best choice than a seller with fewer reviews and a higher percentage, due to reduced uncertainty.
 > \*\*H2 (Inadequacy of Expected Value):\*\* Ranking sellers by posterior expected value `E\[S] = α/(α+β)` does not always agree with ranking by probability of dominance `P(Xₖ = max)`, and the latter is the superior decision criterion under uncertainty.
 > \*\*H3 (Convergence of Posterior):\*\* As review counts grow, the posterior Beta distribution tightens around the true success rate, reducing the gap between probability-of-dominance rankings and simple percentage rankings.
 ---
-📐 Methodology
+Methodology
 Statistical Framework
 The model treats each seller-buyer interaction as a Bernoulli trial: each review is either positive (success, probability `S`) or negative (failure, probability `1-S`). The seller's underlying quality `S` is unknown and modeled probabilistically.
 Step 1 — Likelihood (Binomial Distribution)
@@ -67,7 +67,7 @@ D3	Beta(187, 15)	187	15
 Implementation Language
 All derivations, numerical computations, and visualizations are implemented in R using base R functions (`dbeta`, `pbeta`, `integrate`) with no external package dependencies beyond base graphics.
 ---
-📊 Key Findings & Visualizations
+Key Findings & Visualizations
 Finding 1 — Posterior Beta Distributions
 Plotting `Beta(11,1)`, `Beta(49,3)`, and `Beta(187,15)` reveals that:
 D1's distribution (10 reviews, 100%) is extremely wide — high uncertainty
@@ -115,14 +115,12 @@ bayesian-ecommerce-resellers/
 │   └── dominance\_vs\_expectation.R   # Comparison: E\[X] ranking vs P(dominance) ranking
 │
 ├── figures/
-│   ├── beta\_distributions.png       # Overlaid posterior density plots
-│   ├── beta\_with\_expectations.png   # Beta distributions annotated with E\[X] values
-│   └── 3d\_joint\_distribution.png    # Joint density surface for P(x₁ > x₂) visualization
-│
-└── LICENSE
+    ├── beta\_distributions.png       # Overlaid posterior density plots
+    ├── beta\_with\_expectations.png   # Beta distributions annotated with E\[X] values
+    └── 3d\_joint\_distribution.png    # Joint density surface for P(x₁ > x₂) visualization
 ```
 ---
-⚙️ Installation & Usage
+Installation & Usage
 Prerequisites
 R (version 4.0 or above) — Download R
 No additional packages required; all code uses base R
@@ -173,7 +171,7 @@ legend("topleft",
        col = c("blue", "red", "violet"), lwd = 2)
 ```
 ---
-🔍 Results Interpretation Guide
+Results Interpretation Guide
 Metric	Formula	Interpretation
 Posterior α	`α = positive\_reviews + 1`	Effective "success count" including prior
 Posterior β	`β = negative\_reviews + 1`	Effective "failure count" including prior
@@ -183,7 +181,7 @@ P(Xₖ > Xⱼ)	Closed-form double sum	Probability seller k is genuinely better t
 P(Xₖ = best)	Three-way dominance formula	Probability seller k is the best option to buy from
 Decision rule: Choose the seller with the highest `P(Xₖ = best)`. This outperforms both "highest rating %" and "highest posterior mean" as a selection criterion because it fully accounts for the uncertainty that arises from small review counts.
 ---
-💡 Contribution to Consumer Behavior Research
+Contribution to Consumer Behavior Research
 This project offers several insights relevant to e-commerce platforms, behavioral economics, and consumer psychology:
 1. The 100% Paradox: A seller with a perfect rating from a small number of reviews is not necessarily inferior to one with a slightly lower rating from more reviews. Bayesian updating assigns a wide posterior to perfect-but-sparse data, preserving the possibility of genuine high quality.
 2. Sample Size is Information: The model formally quantifies what consumers intuitively feel — that more reviews make a rating more credible. The posterior variance `Var\[X] = αβ/\[(α+β)²(α+β+1)]` decreases as review counts grow, narrowing the distribution.
@@ -191,23 +189,9 @@ This project offers several insights relevant to e-commerce platforms, behaviora
 4. Review Inflation Detection: Sellers artificially suppressing negative reviews would show an unusually narrow, high-confidence posterior inconsistent with their volume. Platforms could flag such anomalies using this framework.
 5. Generalizability: While framed around e-commerce resellers, the Beta-Binomial Bayesian framework applies broadly — clinical trial success rates, ad click-through optimization, A/B testing, and anywhere a sequence of binary outcomes must be ranked under uncertainty.
 ---
-📄 License
-This project is licensed under the MIT License — see the LICENSE file for details.
----
-📖 Citation
-If you use this work in your research or coursework, please cite:
-```bibtex
-@misc{bayesian\_ecommerce\_resellers\_2024,
-  author       = {A222, A210},
-  title        = {Bayesian View of E-Commerce Resellers: A Probabilistic Framework
-                  for Evaluating Seller Trustworthiness from Review Data},
-  year         = {2024},
-  institution  = {B.Tech Computer Engineering, Batch II},
-  note         = {Probability and Statistics Course Project}
-}
-```
+
 ---
 🙏 Acknowledgements
 This project was developed as part of a Probability and Statistics course in the B.Tech Computer Engineering program. The motivating problem — choosing between three sellers with different review volumes and ratings — was used as a pedagogical thread to connect Bayesian inference, Beta distributions, and decision theory.
 ---
-Presented by: A222, A210 · B-Tech C.E., Batch II · November 2024
+Presented by: Devansh Patel · B-Tech C.E., Batch II · November 2024
