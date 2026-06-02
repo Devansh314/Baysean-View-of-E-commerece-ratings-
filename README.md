@@ -3,9 +3,8 @@ Bayesian Beta-Binomial framework for ranking e-commerce sellers by probability o
 Bayesian View of E-Commerce Resellers
 A Probabilistic Framework for Evaluating Seller Trustworthiness from Review Data
 ![R](https://www.r-project.org/)
-![License: MIT](https://opensource.org/licenses/MIT)
 [![Stats](https://img.shields.io/badge/Method-Bayesian%20Inference-8A2BE2?style=flat-square)]()
-[![Domain](https://img.shields.io/badge/Domain-E--Commerce%20Analytics-FF6B35?style=flat-square)]()
+
 ---
 Overview
 When you browse a product on an e-commerce platform and see three sellers — one with 10 reviews at 100% positive, another with 50 reviews at 96% positive, and a third with 200 reviews at 93% positive — which do you choose?
